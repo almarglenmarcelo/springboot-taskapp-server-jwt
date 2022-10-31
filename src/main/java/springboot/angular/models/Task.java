@@ -26,6 +26,13 @@ public class Task {
 
     public Task() {}
 
+    public Task(int id, String title, String description, User user) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.user = user;
+    }
+
     public Task(String title, String description, User user) {
         this.id = id;
         this.title = title;

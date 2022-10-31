@@ -21,6 +21,8 @@ public class JwtFilter {
 
         // This block specifies which routes must be protected from non-authenticated users
         registrationBean.addUrlPatterns("/api/tasks/*");
+        registrationBean.addUrlPatterns("/api/tasks");
+        registrationBean.addUrlPatterns("/api/tasks/{taskId}");
 
         return registrationBean;
     }

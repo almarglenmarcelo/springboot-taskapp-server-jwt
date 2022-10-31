@@ -18,13 +18,11 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
-
     @PostMapping("/api/users/register")
     public ResponseEntity registerUser(@RequestBody User user) {
 
         return userService.userRegister(user);
     }
-
 
     @PostMapping("/api/users/login")
     public ResponseEntity loginUser(@RequestBody HashMap<String, Object> credentials) {

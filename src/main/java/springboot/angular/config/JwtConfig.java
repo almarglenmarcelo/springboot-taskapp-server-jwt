@@ -14,8 +14,6 @@ public class JwtConfig {
     public JwtConfig() {}
 
 
-
-
     public String generateToken(int id, String username){
 
         return Jwts.builder()
