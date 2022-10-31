@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "b52ddc0d-c8ae-403a-9c94-a78b6ff896bf",
+		"name": "SpringBoot_Angular",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23124965"
+	},
+	"item": [
+		{
+			"name": "Task Requests",
+			"item": [
+				{
+					"name": "Create Task",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhbG1hcjI4IiwiaWF0IjoxNjY3MTQ2ODY4LCJleHAiOjE2NjcxNjQ4Njh9.HOBgjOYt78CKQ6PFWAeyPQJxNvMC_5Vs2PMNz6oCrnbtnaxzbROV8OsgPh99vmaqZ9BLWqkmwlCpEHzvgky-fw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Learn ReactJS\",\r\n    \"description\": \"Watch ReactJS on Youtube\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Task",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhbG1hcjI4IiwiaWF0IjoxNjY3MTk3NjExLCJleHAiOjE2NjcyMTU2MTF9.6-konYTiNup2ORS-WC0KIKxPjg5pZo7ppvfxqAK7aD-LZqycSdq76bJzEVnxh1E_J7EOBY--X-U50aShfLlA4w",
+								"type": "text",
+								"description": "almar28"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/tasks/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tasks",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One Task",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhbG1hcjI4IiwiaWF0IjoxNjY3MTk3NjExLCJleHAiOjE2NjcyMTU2MTF9.6-konYTiNup2ORS-WC0KIKxPjg5pZo7ppvfxqAK7aD-LZqycSdq76bJzEVnxh1E_J7EOBY--X-U50aShfLlA4w",
+								"type": "text",
+								"description": "almar28",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpZCI6NiwidXNlcm5hbWUiOiJhZ21hcjI4IiwiaWF0IjoxNjY3MjE1MDM5LCJleHAiOjE2NjcyMzMwMzl9.ow6Powz2WyKAU05szzevKYFj8XBTMm7U-CM6lVvSmGzO_2SCC-aaGFbMbP07nAdrTe9mU3rnRE9FL8jSOtaiTw",
+								"description": "agmar28",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/tasks/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tasks",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Task",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhbG1hcjI4IiwiaWF0IjoxNjY3MTk3NjExLCJleHAiOjE2NjcyMTU2MTF9.6-konYTiNup2ORS-WC0KIKxPjg5pZo7ppvfxqAK7aD-LZqycSdq76bJzEVnxh1E_J7EOBY--X-U50aShfLlA4w",
+								"type": "text",
+								"description": "almar28",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpZCI6NiwidXNlcm5hbWUiOiJhZ21hcjI4IiwiaWF0IjoxNjY3MjE1MDM5LCJleHAiOjE2NjcyMzMwMzl9.ow6Powz2WyKAU05szzevKYFj8XBTMm7U-CM6lVvSmGzO_2SCC-aaGFbMbP07nAdrTe9mU3rnRE9FL8jSOtaiTw",
+								"description": "agmar28",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 10,\r\n    \"title\": \"Configure Edit Task Done\",\r\n    \"description\": \"Configure Edit Function in SpringBoot and Angular\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Tasks By UserId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhbG1hcjI4IiwiaWF0IjoxNjY3MTk3NjExLCJleHAiOjE2NjcyMTU2MTF9.6-konYTiNup2ORS-WC0KIKxPjg5pZo7ppvfxqAK7aD-LZqycSdq76bJzEVnxh1E_J7EOBY--X-U50aShfLlA4w",
+								"type": "text",
+								"description": "almar28\n"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpZCI6NiwidXNlcm5hbWUiOiJhZ21hcjI4IiwiaWF0IjoxNjY3MTk3NzM1LCJleHAiOjE2NjcyMTU3MzV9.3pC36XKKRpGooIGKOcBRO_Ubus5bD0ps2NmgJnONecZPLFEHopZ87voHh1pkpQ-33ph6-DmNmeMID2WK6U0JnA",
+								"description": "agmar28",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"almar28\",\r\n    \"password\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"agmar28\",\r\n    \"password\":\"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
