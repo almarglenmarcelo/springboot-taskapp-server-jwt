@@ -1,6 +1,5 @@
 package springboot.angular.controllers;
 
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,23 +17,19 @@ public class TaskController {
 
 
     @GetMapping("/api/tasks")
-    public ResponseEntity getTasks( HttpServletRequest httpServletRequest){
+    public ResponseEntity<Object> getTasks(HttpServletRequest httpServletRequest){
         return taskService.getTasks(httpServletRequest);
     }
     @GetMapping("/api/tasks/{taskId}")
     public ResponseEntity<Object> getTask(@PathVariable int taskId, HttpServletRequest httpRequest){
         return taskService.getSingleTask(taskId, httpRequest);
     }
+
     @PostMapping("/api/tasks")
-    public ResponseEntity createTask(@RequestBody Task task,  HttpServletRequest httpRequest) {
+    public ResponseEntity<Object> createTask(@RequestBody Task task,  HttpServletRequest httpRequest) {
         return taskService.createTask(task, httpRequest);
     }
 
-    @PostMapping("/api/tasks/complete")
-    public ResponseEntity<Object> completeTask(@RequestBody HashMap<String, Object> data, HttpServletRequest httpRequest){
-
-        return taskService.taskCompleted(data, httpRequest);
-    }
 
     @PutMapping("/api/tasks")
     public ResponseEntity<Object> updateTask(@RequestBody HashMap<String, String> data, HttpServletRequest httpServletRequest){
@@ -44,6 +39,8 @@ public class TaskController {
     public ResponseEntity<Object> deleteTask(@PathVariable int taskId, HttpServletRequest httpServletRequest){
         return taskService.deleteTask(taskId, httpServletRequest);
     }
+
+
 
 
 }

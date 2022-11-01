@@ -9,15 +9,18 @@ import java.util.HashMap;
 
 public interface ITaskService {
 
-    ResponseEntity  createTask(Task task, HttpServletRequest httpRequest);
+    ResponseEntity<Object>  createTask(Task task, HttpServletRequest httpRequest);
 
-    ResponseEntity updateTask(HashMap<String, String> data, HttpServletRequest httpRequest);
+    ResponseEntity<Object> updateTask(HashMap<String, String> data, HttpServletRequest httpRequest);
 
-    ResponseEntity getSingleTask(int taskId, HttpServletRequest httpServletRequest);
-    ResponseEntity taskCompleted(HashMap<String, Object> data, HttpServletRequest httpServletRequest);
+    ResponseEntity<Object> getSingleTask(int taskId, HttpServletRequest httpServletRequest);
 
-    ResponseEntity deleteTask(int taskId, HttpServletRequest httpRequest);
+    ResponseEntity<Object> deleteTask(int taskId, HttpServletRequest httpRequest);
 
-    ResponseEntity getTasks(HttpServletRequest httpRequest);
+    ResponseEntity<Object> getTasks(HttpServletRequest httpRequest);
+
+
+
+
 
 }

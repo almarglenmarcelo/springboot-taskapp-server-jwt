@@ -27,8 +27,6 @@ public class TaskServiceImpl implements ITaskService{
     private ITaskRepository taskRepository;
     @Autowired
     private IUserRepository userRepository;
-    @Autowired
-    private ITaskCompleted taskCompleted;
 
 
     @Override
@@ -82,6 +80,7 @@ public class TaskServiceImpl implements ITaskService{
 
     }
 
+
     @Override
     public ResponseEntity<Object> getTasks(HttpServletRequest httpRequest) {
         int userId = Integer.parseInt(httpRequest.getAttribute("id").toString());
@@ -113,29 +112,4 @@ public class TaskServiceImpl implements ITaskService{
 
     }
 
-
-    @Override
-    public ResponseEntity<Object> taskCompleted(HashMap<String, Object> data, HttpServletRequest httpRequest) {
-        HashMap<String, Object> response = new HashMap<>();
-        int userId = Integer.parseInt(httpRequest.getAttribute("id").toString());
-        int taskId = Integer.parseInt(data.get("id").toString());
-        Optional<Task> tempTask = taskRepository.findById(taskId);
-
-        Task theTask = null;
-        if(tempTask.isPresent()){
-            theTask = tempTask.get();
-
-            CompletedTask completedTask = new CompletedTask(theTask.getId(),
-                                                            theTask.getTitle(),
-                                                            theTask.getDescription(),
-                                                            userId,
-                                                            LocalDateTime.now());
-            taskCompleted.save(completedTask);
-            deleteTask(taskId, httpRequest);
-            response.put("result", "task_finished");
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-        response.put("result", "task_not_found");
-        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
-    }
 }
