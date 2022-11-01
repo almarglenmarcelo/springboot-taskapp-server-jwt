@@ -16,21 +16,25 @@ import java.io.IOException;
 
 public class AuthFilter extends GenericFilterBean {
 
-
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse)  response;
 
-
         String authorizationHeader = httpServletRequest.getHeader("Authorization");
         String[] authorizationHeaderArr = (authorizationHeader == null)? new String[]{} : authorizationHeader.split("Bearer ");
 
-        if(authorizationHeader == null)
+        if(authorizationHeader == null){
             httpServletResponse.sendError(HttpStatus.FORBIDDEN.value(), "Authorization header must be provided");
+        }
 
-        if(authorizationHeaderArr.length <= 1)
+
+        if(authorizationHeaderArr.length <= 1){
+            System.out.println("Single Length");
+            System.out.println(authorizationHeader);
             httpServletResponse.sendError(HttpStatus.FORBIDDEN.value(), "Authorization token must be 'Bearer [token]'");
+        }
+
 
         try{
             String token = authorizationHeaderArr[1];

@@ -10,9 +10,7 @@ import java.util.Date;
 @Component
 public class JwtConfig {
 
-
     public JwtConfig() {}
-
 
     public String generateToken(int id, String username){
 

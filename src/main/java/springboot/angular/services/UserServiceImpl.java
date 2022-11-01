@@ -26,7 +26,7 @@ public class UserServiceImpl implements IUserService{
     private JwtConfig jwtConfig;
 
     @Override
-    public ResponseEntity userLogin(HashMap<String, Object> credentials) {
+    public ResponseEntity<Object> userLogin(HashMap<String, Object> credentials) {
         HashMap<String, String> response = new HashMap<>();
         User matchedUser = userRepository.findByUsername(credentials.get("username").toString());
 
@@ -55,7 +55,7 @@ public class UserServiceImpl implements IUserService{
     }
 
     @Override
-    public ResponseEntity userRegister(User user) {
+    public ResponseEntity<Object> userRegister(User user) {
         HashMap<String, String> response = new HashMap<>();
         User matchedUser = userRepository.findByUsername(user.getUsername());
 

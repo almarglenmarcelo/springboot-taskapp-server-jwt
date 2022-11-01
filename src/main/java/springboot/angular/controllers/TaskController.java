@@ -13,36 +13,37 @@ import java.util.HashMap;
 @RestController
 public class TaskController {
 
-
     @Autowired
     private ITaskService taskService;
 
 
     @GetMapping("/api/tasks")
     public ResponseEntity getTasks( HttpServletRequest httpServletRequest){
-
         return taskService.getTasks(httpServletRequest);
     }
     @GetMapping("/api/tasks/{taskId}")
     public ResponseEntity<Object> getTask(@PathVariable int taskId, HttpServletRequest httpRequest){
         return taskService.getSingleTask(taskId, httpRequest);
     }
-
     @PostMapping("/api/tasks")
     public ResponseEntity createTask(@RequestBody Task task,  HttpServletRequest httpRequest) {
-
         return taskService.createTask(task, httpRequest);
-
     }
+
+    @PostMapping("/api/tasks/complete")
+    public ResponseEntity<Object> completeTask(@RequestBody HashMap<String, Object> data, HttpServletRequest httpRequest){
+
+        return taskService.taskCompleted(data, httpRequest);
+    }
+
     @PutMapping("/api/tasks")
     public ResponseEntity<Object> updateTask(@RequestBody HashMap<String, String> data, HttpServletRequest httpServletRequest){
-
         return taskService.updateTask(data, httpServletRequest);
     }
-
     @DeleteMapping("/api/tasks/{taskId}")
     public ResponseEntity<Object> deleteTask(@PathVariable int taskId, HttpServletRequest httpServletRequest){
         return taskService.deleteTask(taskId, httpServletRequest);
     }
+
 
 }

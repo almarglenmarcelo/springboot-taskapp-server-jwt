@@ -5,13 +5,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import springboot.angular.models.CompletedTask;
 import springboot.angular.models.Task;
 import springboot.angular.models.User;
+import springboot.angular.repository.ITaskCompleted;
 import springboot.angular.repository.ITaskRepository;
 import springboot.angular.repository.IUserRepository;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -22,9 +25,10 @@ public class TaskServiceImpl implements ITaskService{
 
     @Autowired
     private ITaskRepository taskRepository;
-
     @Autowired
     private IUserRepository userRepository;
+    @Autowired
+    private ITaskCompleted taskCompleted;
 
 
     @Override
@@ -57,6 +61,7 @@ public class TaskServiceImpl implements ITaskService{
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+
     @Override
     public ResponseEntity<Object> deleteTask(int taskId, HttpServletRequest httpRequest) {
         HashMap<String, Object> response = new HashMap<>();
@@ -78,7 +83,7 @@ public class TaskServiceImpl implements ITaskService{
     }
 
     @Override
-    public ResponseEntity getTasks(HttpServletRequest httpRequest) {
+    public ResponseEntity<Object> getTasks(HttpServletRequest httpRequest) {
         int userId = Integer.parseInt(httpRequest.getAttribute("id").toString());
         List<Task> tasks = taskRepository.findAllTask(userId);
 
@@ -93,7 +98,7 @@ public class TaskServiceImpl implements ITaskService{
     }
 
     @Override
-    public ResponseEntity getSingleTask(int taskId, HttpServletRequest httpServletRequest) {
+    public ResponseEntity<Object> getSingleTask(int taskId, HttpServletRequest httpServletRequest) {
         HashMap<String, Object> response = new HashMap<>();
         int userId = Integer.parseInt(httpServletRequest.getAttribute("id").toString());
 
@@ -106,5 +111,31 @@ public class TaskServiceImpl implements ITaskService{
             return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
         }
 
+    }
+
+
+    @Override
+    public ResponseEntity<Object> taskCompleted(HashMap<String, Object> data, HttpServletRequest httpRequest) {
+        HashMap<String, Object> response = new HashMap<>();
+        int userId = Integer.parseInt(httpRequest.getAttribute("id").toString());
+        int taskId = Integer.parseInt(data.get("id").toString());
+        Optional<Task> tempTask = taskRepository.findById(taskId);
+
+        Task theTask = null;
+        if(tempTask.isPresent()){
+            theTask = tempTask.get();
+
+            CompletedTask completedTask = new CompletedTask(theTask.getId(),
+                                                            theTask.getTitle(),
+                                                            theTask.getDescription(),
+                                                            userId,
+                                                            LocalDateTime.now());
+            taskCompleted.save(completedTask);
+            deleteTask(taskId, httpRequest);
+            response.put("result", "task_finished");
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        response.put("result", "task_not_found");
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 }

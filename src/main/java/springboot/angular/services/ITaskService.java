@@ -14,6 +14,7 @@ public interface ITaskService {
     ResponseEntity updateTask(HashMap<String, String> data, HttpServletRequest httpRequest);
 
     ResponseEntity getSingleTask(int taskId, HttpServletRequest httpServletRequest);
+    ResponseEntity taskCompleted(HashMap<String, Object> data, HttpServletRequest httpServletRequest);
 
     ResponseEntity deleteTask(int taskId, HttpServletRequest httpRequest);
 
