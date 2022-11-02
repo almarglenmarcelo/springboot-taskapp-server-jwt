@@ -6,8 +6,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import springboot.angular.models.CompletedTask;
 import springboot.angular.models.Task;
+import springboot.angular.models.User;
 import springboot.angular.repository.ITaskCompleted;
 import springboot.angular.repository.ITaskRepository;
+import springboot.angular.repository.IUserRepository;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
@@ -25,6 +27,9 @@ public class TaskCompletedServiceImpl implements ITaskCompletedService {
 
     @Autowired
     private ITaskRepository taskRepository;
+
+    @Autowired
+    private IUserRepository userRepository;
 
     @Override
     public ResponseEntity<Object> deleteTaskCompleted(int taskId, HttpServletRequest httpServletRequest) {
@@ -109,4 +114,29 @@ public class TaskCompletedServiceImpl implements ITaskCompletedService {
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
+    @Override
+    public ResponseEntity<Object> redoTask(HashMap<String, Object> data, HttpServletRequest httpRequest) {
+        HashMap<String, Object> response = new HashMap<>();
+
+        int completedTaskId = Integer.parseInt(data.get("id").toString());
+        String username = httpRequest.getAttribute("username").toString();
+        User matchedUser = userRepository.findByUsername(username);
+
+        CompletedTask completedTask = taskCompletedRepository.findById(completedTaskId).get();
+
+        if(completedTask != null) {
+            Task theTask = new Task();
+            theTask.setTitle(completedTask.getTitle());
+            theTask.setDescription(completedTask.getDescription());
+            theTask.setUser(matchedUser);
+
+            taskRepository.save(theTask);
+            taskCompletedRepository.deleteById(completedTaskId);
+            response.put("result", "task_redo");
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }else {
+            response.put("result", "completed_task_not_found");
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        }
+    }
 }

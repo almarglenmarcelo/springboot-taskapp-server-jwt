@@ -16,4 +16,6 @@ public interface ITaskCompletedService {
     ResponseEntity<Object> deleteTaskCompleted(int taskId, HttpServletRequest httpServletRequest);
 
     ResponseEntity<Object> deleteTask(int taskId, HttpServletRequest httpRequest);
+
+    ResponseEntity<Object> redoTask(HashMap<String, Object> data, HttpServletRequest httpRequest);
 }

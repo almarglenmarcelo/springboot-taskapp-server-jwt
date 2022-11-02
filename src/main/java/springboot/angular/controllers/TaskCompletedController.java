@@ -28,6 +28,11 @@ public class TaskCompletedController {
         return taskCompletedService.taskCompleted(data, httpRequest);
     }
 
+    @PostMapping("/api/tasks/redo")
+    public ResponseEntity<Object> redoTask(@RequestBody HashMap<String, Object> data, HttpServletRequest httpServletRequest){
+        return taskCompletedService.redoTask(data, httpServletRequest);
+    }
+
     @DeleteMapping("/api/tasks/completed/{taskId}")
     public ResponseEntity<Object> deleteCompletedTask(@PathVariable int taskId, HttpServletRequest httpServletRequest){
         return taskCompletedService.deleteTaskCompleted(taskId, httpServletRequest);
