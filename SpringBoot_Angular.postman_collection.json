@@ -45,6 +45,43 @@
 					"response": []
 				},
 				{
+					"name": "Complete Task",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhbG1hcjI4IiwiaWF0IjoxNjY3MjY1NzcxLCJleHAiOjE2NjcyODM3NzF9.wqJsZBpDqFS7H4D6h2anBgOBbS0trBg-kIrU-2fnIQm9_D1MGL9qHSZUFOLzLDPDjo0L8n5oMN3AjYVXmraveQ",
+								"type": "text",
+								"description": "almar28"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"9\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/tasks/complete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tasks",
+								"complete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Delete Task",
 					"request": {
 						"method": "DELETE",
@@ -169,16 +206,9 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhbG1hcjI4IiwiaWF0IjoxNjY3MTk3NjExLCJleHAiOjE2NjcyMTU2MTF9.6-konYTiNup2ORS-WC0KIKxPjg5pZo7ppvfxqAK7aD-LZqycSdq76bJzEVnxh1E_J7EOBY--X-U50aShfLlA4w",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhbG1hcjI4IiwiaWF0IjoxNjY3MjY1NzcxLCJleHAiOjE2NjcyODM3NzF9.wqJsZBpDqFS7H4D6h2anBgOBbS0trBg-kIrU-2fnIQm9_D1MGL9qHSZUFOLzLDPDjo0L8n5oMN3AjYVXmraveQ",
 								"type": "text",
 								"description": "almar28\n"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpZCI6NiwidXNlcm5hbWUiOiJhZ21hcjI4IiwiaWF0IjoxNjY3MTk3NzM1LCJleHAiOjE2NjcyMTU3MzV9.3pC36XKKRpGooIGKOcBRO_Ubus5bD0ps2NmgJnONecZPLFEHopZ87voHh1pkpQ-33ph6-DmNmeMID2WK6U0JnA",
-								"description": "agmar28",
-								"type": "text",
-								"disabled": true
 							}
 						],
 						"url": {
@@ -193,6 +223,85 @@
 								"tasks"
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Completed Tasks By UserId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhbG1hcjI4IiwiaWF0IjoxNjY3MzE3NTU0LCJleHAiOjE2NjczMzU1NTR9.NSUsdvhAj6OynDuMPG1DOaRSBZiVxRcVlWfZNvXi6Zs66kPUy74C77PLvHSVEOprCjTjzoRH0HtIE7U_EggOAA",
+								"type": "text",
+								"description": "almar28\n"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpZCI6NiwidXNlcm5hbWUiOiJhZ21hcjI4IiwiaWF0IjoxNjY3MzE3NzI1LCJleHAiOjE2NjczMzU3MjV9.HuYaUIYDtLEKrAbL1vWgSQo_1zjDuFU5KaGuELKn9IsPJ8zXfIUjILsJbMqvvl_dqN7wAY3psxAahNTEQPz14w",
+								"description": "agmar28",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/tasks/completed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tasks",
+								"completed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Completed Task By UserId",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhbG1hcjI4IiwiaWF0IjoxNjY3MzIxNzI2LCJleHAiOjE2NjczMzk3MjZ9.ON11JLkd53NHjP6S1VezCENNFtRKECPFe_4KRTVlYnP4R3pY2RiviZNLkJYnKIsMGJlJyr6St4urtpfSoLUdcQ",
+								"type": "text",
+								"description": "almar28\n"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpZCI6NiwidXNlcm5hbWUiOiJhZ21hcjI4IiwiaWF0IjoxNjY3MzE3NzI1LCJleHAiOjE2NjczMzU3MjV9.HuYaUIYDtLEKrAbL1vWgSQo_1zjDuFU5KaGuELKn9IsPJ8zXfIUjILsJbMqvvl_dqN7wAY3psxAahNTEQPz14w",
+								"description": "agmar28",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/tasks/completed/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tasks",
+								"completed",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Redo Task",
+					"request": {
+						"method": "GET",
+						"header": []
 					},
 					"response": []
 				}
@@ -235,7 +344,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\":\"agmar28\",\r\n    \"password\":\"123\"\r\n}",
+					"raw": "{\r\n    \"username\":\"almar28\",\r\n    \"password\":\"123\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
