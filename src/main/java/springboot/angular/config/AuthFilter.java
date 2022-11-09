@@ -28,7 +28,6 @@ public class AuthFilter extends GenericFilterBean {
             httpServletResponse.sendError(HttpStatus.FORBIDDEN.value(), "Authorization header must be provided");
         }
 
-
         if(authorizationHeaderArr.length <= 1){
             System.out.println("Single Length");
             System.out.println(authorizationHeader);
