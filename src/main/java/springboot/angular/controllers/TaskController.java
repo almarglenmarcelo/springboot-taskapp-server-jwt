@@ -30,7 +30,6 @@ public class TaskController {
         return taskService.createTask(task, httpRequest);
     }
 
-
     @PutMapping("/api/tasks")
     public ResponseEntity<Object> updateTask(@RequestBody HashMap<String, String> data, HttpServletRequest httpServletRequest){
         return taskService.updateTask(data, httpServletRequest);

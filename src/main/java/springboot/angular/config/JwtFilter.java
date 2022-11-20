@@ -8,9 +8,10 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import java.util.Arrays;
+
 @Component
 public class JwtFilter {
-
 
     @Bean
     public FilterRegistrationBean<AuthFilter> setAuthFilter() {
@@ -24,6 +25,7 @@ public class JwtFilter {
         registrationBean.addUrlPatterns("/api/tasks");
         registrationBean.addUrlPatterns("/api/tasks/{taskId}");
 
+
         return registrationBean;
     }
 
@@ -32,14 +34,13 @@ public class JwtFilter {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration configuration = new CorsConfiguration();
 
-
         configuration.setAllowCredentials(true);
-        configuration.addAllowedOrigin("http://localhost:4200");
         configuration.addAllowedHeader("*");
+        configuration.addAllowedOrigin("http://localhost:4200");
         configuration.addAllowedMethod("*");
         source.registerCorsConfiguration("/**", configuration);
 
-        FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
+        FilterRegistrationBean bean = new FilterRegistrationBean<>(new CorsFilter(source));
         bean.setOrder(0);
 
         return bean;
