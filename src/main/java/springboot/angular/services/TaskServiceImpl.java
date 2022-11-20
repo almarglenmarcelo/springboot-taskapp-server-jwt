@@ -90,7 +90,7 @@ public class TaskServiceImpl implements ITaskService{
         if(tasks.size() == 0) {
             HashMap<String, Object> response = new HashMap<>();
             response.put("result", "no_tasks_found");
-            return new ResponseEntity<>(response, HttpStatus.OK);
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
         }
 
         return new ResponseEntity<>(tasks, HttpStatus.OK);
